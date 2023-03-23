@@ -3,9 +3,9 @@ import { Client } from "pg";
 const connectionString = process.env.DB_CONNECTION_STRING;
 
 export default async function saveEmail(req, res) {
-  const client = new Client(connectionString);
   
   try {
+    const client = new Client(connectionString);
     await client.connect();
 
     // const results = await client.query("SELECT NOW()");
