@@ -27,7 +27,7 @@ function Header() {
           <div className="mr-4">
             {/* Logo */}
             <Link href="/" className="block" aria-label="ROSSA">
-              <Image src={Favicon} width={64} />
+              <Image src={Favicon} width={64} alt="ROSSA Logotype"/>
 
               {/* <svg
                 className="w-8 h-8"
