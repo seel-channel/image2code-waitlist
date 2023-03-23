@@ -1,11 +1,38 @@
-import React from "react";
-
-
+import React, { useState } from "react";
 
 function HeroHome() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const submit = async (e) => {
+    setHasSubmitted(false);
+    setError("");
+    
+    e.preventDefault();
+
+    let response = await fetch("/api/waitlist", {
+      method: "POST",
+      body: JSON.stringify({ email: email }),
+    });
+
+    if (response.ok) {
+      setHasSubmitted(true);
+    } else {
+      setError(await response.text());
+    }
+
+    setEmail("");
+  };
+
+  const changeEmail = (e) => {
+    setError("");
+    setHasSubmitted(false);
+    setEmail(e.target.value);
+  };
+
   return (
     <section className="relative">
-      {/* Illustration behind hero content */}
       <div
         className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
         aria-hidden="true"
@@ -56,14 +83,15 @@ function HeroHome() {
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                Transform any UI design into code for the most popular frameworks.
+                Transform any UI design into code for the most popular
+                frameworks.
               </p>
               <div
                 className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
-                <form>
+                <form onSubmit={submit}>
                   <div className="w-80 flex flex-wrap gap-4">
                     <input
                       id="email"
@@ -71,10 +99,23 @@ function HeroHome() {
                       className="rounded h-12 border border-gray-300 w-full text-gray-600"
                       placeholder="Enter email to join waitlist..."
                       required
+                      value={email}
+                      onChange={changeEmail}
                     />
+                    <>
+                      {error != "" && (
+                        <p className="text-red-600 text-sm">{error}</p>
+                      )}
+                    </>
+                    {hasSubmitted && (
+                      <p className="text-green-600 text-sm">
+                        Thanks for subscribing!
+                      </p>
+                    )}
                     <button
                       className="btn h-12 text-white bg-blue-600 hover:bg-blue-700 w-full"
                       href="#0"
+                      type="submit"
                     >
                       Suscribe
                     </button>
