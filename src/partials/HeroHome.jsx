@@ -8,7 +8,7 @@ function HeroHome() {
   const submit = async (e) => {
     setHasSubmitted(false);
     setError("");
-    
+
     e.preventDefault();
 
     let response = await fetch("/api/waitlist", {
@@ -92,7 +92,7 @@ function HeroHome() {
                 data-aos-delay="300"
               >
                 <form onSubmit={submit}>
-                  <div className="w-80 flex flex-wrap gap-4">
+                  <div className="max-w-80 flex flex-wrap gap-4">
                     <input
                       id="email"
                       type="email"
@@ -122,17 +122,17 @@ function HeroHome() {
                   </div>
                 </form>
               </div>
-              <iframe
-                src="https://www.youtube.com/embed/P4K2YHiBk9w"
-                width="560"
-                height="315"
-                frameBorder="0"
-                className="rounded mt-8 mx-auto border-none"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                data-aos="zoom-y-out"
-                data-aos-delay="300"
-              ></iframe>
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe
+                  src="https://www.youtube.com/embed/P4K2YHiBk9w"
+                  frameBorder="0"
+                  className="rounded mt-8 mx-auto border-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-aos="zoom-y-out"
+                  data-aos-delay="300"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
