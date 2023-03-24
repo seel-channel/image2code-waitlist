@@ -17,11 +17,11 @@ function Home() {
         />
         <meta
           name="description"
-          content="Our Image2Code, transforms any UI design into code for the most popular frameworks."
+          content="Transform any UI design into code for the most popular frameworks."
         />
         <meta
           property="og:description"
-          content="Our Image2Code, transforms any UI design into code for the most popular frameworks."
+          content="Transform any UI design into code for the most popular frameworks."
         />
         <meta property="og:image" content="https://rossa.ai/favicon.png" />
       </Head>
